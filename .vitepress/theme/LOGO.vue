@@ -1,7 +1,7 @@
 <template>
   <img
     src="https://images-sxxyrry.pages.dev/LOGO_Bigger.png"
-    alt="Logo"
+    alt="TT23XR Studio (Logo)"
     :width="width"
     :height="height"
   />
