@@ -15,7 +15,10 @@ export default defineConfig({
   description: "这是 TT23XR Studio 搭建的文档站点",
   lang: 'zh-CN',
   lastUpdated: true,
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: [
+    /^\.\/LICENSE-CODE$/,
+    /^\.\/LICENSE-DOCS$/,
+  ],
   vite: {
     server: {
       allowedHosts: ['p.ceroxe.fun']
@@ -48,8 +51,42 @@ export default defineConfig({
     },
     sidebarMenuLabel: '菜单',
     returnToTopLabel: '回到顶部',
+    notFound: {
+      code: '404',
+      title: '页面不存在',
+      quote: '如果你不改变方向，继续寻找，可能会到达你要去的地方。',
+      linkText: '回到主页',
+      linkLabel: '回到主页'
+    },
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        locales: {
+          root: {
+            translations: {
+              button: {
+                buttonText: '搜索文档',
+                buttonAriaLabel: '搜索'
+              },
+              modal: {
+                displayDetails: '显示详细列表',
+                resetButtonTitle: '重置查询',
+                backButtonTitle: '关闭',
+                noResultsText: '没有找到结果',
+                footer: {
+                  selectText: '选择',
+                  selectKeyAriaLabel: '输入',
+                  navigateText: '导航',
+                  navigateUpKeyAriaLabel: '上箭头',
+                  navigateDownKeyAriaLabel: '下箭头',
+                  closeText: '关闭',
+                  closeKeyAriaLabel: 'esc'
+                }
+              }
+            }
+          }
+        }
+      }
     },
     nav: [
       { text: '文档汇总', link: '/' },
