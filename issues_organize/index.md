@@ -3,11 +3,12 @@ title: Issues 组织
 ---
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 
 const REPO = 'TT23XR-Studio/Docs'
 const GITHUB_API = `https://api.github.com/repos/${REPO}`
 const GITHUB_BLOB = `https://github.com/${REPO}/blob/main`
+const GITHUB_RAW = `https://raw.githubusercontent.com/${REPO}/main`
 const GITHUB_ISSUES_NEW = `https://github.com/${REPO}/issues/new`
 
 // 表单数据
@@ -21,6 +22,9 @@ const validating = ref(false)
 const valid = ref(null) // null=未验证, true=有效, false=无效
 const validMessage = ref('')
 
+// 解析出来的 GitHub 仓库内文件路径
+const ghPath = ref('')
+
 // issues 列表
 const issues = ref([])
 const issuesLoading = ref(false)
@@ -32,16 +36,58 @@ const copiedForm = ref(false)
 
 // 验证页面路径
 let validateTimer = null
+let validateToken = 0
+
 function debounceValidate() {
   clearTimeout(validateTimer)
   validateTimer = setTimeout(() => validatePage(), 500)
 }
 
+async function testPageExists(url) {
+  try {
+    const resp = await fetch(url)
+    return [resp.ok, resp]
+  } catch (e) {
+    return [false, null]
+  }
+}
+
+async function fileExists(url) {
+  try {
+    const resp = await fetch(url, { method: 'HEAD' })
+    return resp.ok
+  } catch {
+    return false
+  }
+}
+
+// 路径转 GitHub 文件路径：/TLD → /TLD/index.md, /TLD/zh/getting-started → /TLD/zh/getting-started.md
+async function resolveGitHubPath(path) {
+  let clean = path.trim().replace(/\/+$/, '')
+  if (!clean) return '/index.md'
+
+  // 已经带扩展名
+  if (/\.\w+$/.test(clean)) {
+    if (clean.endsWith('.md')) return clean
+    return `${clean}.md`
+  }
+
+  // 目录形式：优先 index.md，其次同名 .md
+  if (await fileExists(`${GITHUB_RAW}${clean}/index.md`)) return `${clean}/index.md`
+  if (await fileExists(`${GITHUB_RAW}${clean}.md`)) return `${clean}.md`
+  return `${clean}/index.md`
+}
+
 async function validatePage() {
-  let path = pagePath.value.trim()
+  const token = ++validateToken
+  const path = pagePath.value.trim()
+
+  valid.value = null
+  validMessage.value = ''
+  ghPath.value = ''
+
   if (!path) {
-    valid.value = null
-    validMessage.value = ''
+    validating.value = false
     return
   }
 
@@ -63,54 +109,50 @@ async function validatePage() {
   validMessage.value = '验证中...'
 
   try {
-    const url = window.location.origin + path
-    const resp = await fetch(url, { method: 'HEAD', mode: 'no-cors' })
-    // no-cors 模式下无法读取状态码，尝试 GET
-    const resp2 = await fetch(url)
-    if (resp2.ok) {
+    const [ok, resp] = await testPageExists(window.location.origin + path)
+    if (token !== validateToken) return
+
+    if (ok) {
       valid.value = true
       validMessage.value = '页面存在 ✓'
+
+      const resolved = await resolveGitHubPath(path)
+      if (token !== validateToken) return
+      ghPath.value = resolved
     } else {
       valid.value = false
-      validMessage.value = `页面不存在 (${resp2.status})`
+      validMessage.value = `页面不存在${resp ? ` (${resp.status})` : ''}`
     }
   } catch (e) {
+    if (token !== validateToken) return
     valid.value = false
     validMessage.value = '无法访问该页面'
   } finally {
-    validating.value = false
+    if (token === validateToken) validating.value = false
   }
 }
 
-// 路径转 GitHub 文件路径：/TLD → /TLD/index.md, /TLD/zh/getting-started → /TLD/zh/getting-started.md
-function pathToGitHub(path) {
-  if (!path) return ''
-  // 去掉末尾斜杠
-  let p = path.replace(/\/+$/, '')
-  // 没有文件扩展名的，视为 index
-  if (!p.match(/\.\w+$/)) {
-    p += '/index.md'
-  } else if (!p.endsWith('.md')) {
-    p += '.md'
-  }
-  return p
+// 确保 GitHub 路径已解析（用户可能没等验证完成就操作）
+async function ensureGitHubPath() {
+  const path = pagePath.value.trim()
+  if (!path || ghPath.value) return
+  ghPath.value = await resolveGitHubPath(path)
 }
 
 // 生成 issue markdown
 const issueMarkdown = computed(() => {
   const path = pagePath.value.trim()
-  const ghPath = pathToGitHub(path)
-  const githubLink = ghPath ? `${GITHUB_BLOB}${ghPath}` : ''
+  const githubLink = ghPath.value ? `${GITHUB_BLOB}${ghPath.value}` : ''
   let md = `## 页面路径\n\n`
   if (path) {
-    md += `[${path}](${githubLink})\n\n`
+    md += githubLink ? `[${path}](${githubLink})\n\n` : `${path}\n\n`
   } else {
     md += `（未填写）\n\n`
   }
   md += `## 你觉得哪里不正确\n\n${incorrect.value || '（未填写）'}\n\n`
-  md += `## 你观察到的现象\n\n${phenomenon.value || '（未填写）'}\n\n`
-  if (fixSuggestion.value){
-    md += `## 大概怎么修改\n\n${fixSuggestion.value}\n`
+  md += `## 你观察到的现象\n\n${phenomenon.value || '（未填写）'}\n`
+  if (fixSuggestion.value) {
+    md += `\n## 大概怎么修改\n\n${fixSuggestion.value}\n`
   }
   return md
 })
@@ -122,10 +164,11 @@ const issueTitle = computed(() => {
 
 // 复制 markdown
 async function copyMarkdown() {
+  await ensureGitHubPath()
   try {
     await navigator.clipboard.writeText(issueMarkdown.value)
     copiedMarkdown.value = true
-    setTimeout(() => copiedMarkdown.value = false, 2000)
+    setTimeout(() => (copiedMarkdown.value = false), 2000)
   } catch (e) {
     alert('复制失败，请手动复制')
   }
@@ -142,7 +185,7 @@ async function copyForm() {
   try {
     await navigator.clipboard.writeText(JSON.stringify(data, null, 2))
     copiedForm.value = true
-    setTimeout(() => copiedForm.value = false, 2000)
+    setTimeout(() => (copiedForm.value = false), 2000)
   } catch (e) {
     alert('复制失败，请手动复制')
   }
@@ -157,13 +200,15 @@ async function pasteForm() {
     if (data.incorrect !== undefined) incorrect.value = data.incorrect
     if (data.phenomenon !== undefined) phenomenon.value = data.phenomenon
     if (data.fixSuggestion !== undefined) fixSuggestion.value = data.fixSuggestion
+    validatePage()
   } catch (e) {
     alert('粘贴失败，请确保剪贴板中是复制的表单 JSON')
   }
 }
 
 // 创建 issue
-function createIssue() {
+async function createIssue() {
+  await ensureGitHubPath()
   const title = issueTitle.value
   const body = issueMarkdown.value
   const url = `${GITHUB_ISSUES_NEW}?title=${encodeURIComponent(title)}&body=${encodeURIComponent(body)}`
@@ -176,7 +221,7 @@ async function fetchIssues() {
   issuesError.value = ''
   try {
     const resp = await fetch(`${GITHUB_API}/issues?state=all&per_page=20`)
-    if (resp.status === 403) {
+    if (resp.status === 403 || resp.status === 429) {
       issuesError.value = '因为 API 限制，暂时无法读取 Issues 列表。'
       return
     }
@@ -184,7 +229,9 @@ async function fetchIssues() {
       issuesError.value = '读取 Issues 列表失败'
       return
     }
-    issues.value = await resp.json()
+    const data = await resp.json()
+    // GitHub 的 issues 接口会同时返回 PR，需要过滤掉
+    issues.value = data.filter((item) => !item.pull_request)
   } catch (e) {
     issuesError.value = '网络错误，无法读取 Issues 列表'
   } finally {
@@ -194,7 +241,8 @@ async function fetchIssues() {
 
 // 格式化时间
 function formatDate(dateStr) {
-  return new Date(dateStr).toLocaleString('zh-CN')
+  const d = new Date(dateStr)
+  return isNaN(d.getTime()) ? dateStr : d.toLocaleString('zh-CN', { hour12: false })
 }
 
 onMounted(() => {
@@ -203,8 +251,8 @@ onMounted(() => {
   const presetPath = params.get('path')
   if (presetPath) {
     pagePath.value = presetPath
-    validatePage()
   }
+  validatePage()
   fetchIssues()
 })
 </script>
