@@ -11,8 +11,8 @@ const bonLang = {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "TT23XR Studio 的文档站点",
-  description: "这是 TT23XR Studio 搭建的文档站点",
+  title: "TT23XR Studio 文档汇总网站",
+  description: "这是 TT23XR Studio 的文档汇总网站",
   lang: 'zh-CN',
   lastUpdated: true,
   ignoreDeadLinks: true,

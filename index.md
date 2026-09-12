@@ -30,7 +30,7 @@ align-items: center;
 
 ---
 
-### SenRiFFI
+### SenRi FFI
 
 > 统一 FFI（外部函数接口）库
 
@@ -40,7 +40,7 @@ align-items: center;
 
 ---
 
-### TLD Core
+### TaiLerDownloader Core（TLD Core）
 
 > 跨平台、多语言调用的下载器内核
 
