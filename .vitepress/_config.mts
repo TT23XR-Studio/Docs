@@ -11,7 +11,7 @@ const bonLang = {
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  title: "TT23XR Studio 文档汇总网站",
+  title: "TT23XR Studio 的文档汇总网站",
   description: "这是 TT23XR Studio 的文档汇总网站",
   lang: 'zh-CN',
   lastUpdated: true,
@@ -94,7 +94,7 @@ export default defineConfig({
       { text: 'BON', link: '/BON/' },
       { text: 'SenRi FFI', link: '/SenRiFFI/' },
       { text: 'TTP', link: '/TTP/' },
-      { text: '异常世界 （小说）', link: 'https://anomaly-world-xr.pages.dev/' },
+      { text: '异常世界（小说）', link: 'https://anomaly-world-xr.pages.dev/' },
       { text: '组织 issues', link: '/issues_organize' },
     ],
 
@@ -107,7 +107,7 @@ export default defineConfig({
       { text: 'BON', link: '/BON/' },
       { text: 'SenRi FFI', link: '/SenRiFFI/' },
       { text: 'TTP', link: '/TTP/' },
-      { text: '异常世界 （小说）', link: 'https://anomaly-world-xr.pages.dev/' },
+      { text: '异常世界（小说）', link: 'https://anomaly-world-xr.pages.dev/' },
       { text: '组织 issues', link: '/issues_organize' },
     ],
 
