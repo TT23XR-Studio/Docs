@@ -1,0 +1,44 @@
+{
+    nav: [
+      { text: "首页", link: "/index" },
+      // { text: "回到文档汇总", link: "/back/" },
+    ],
+    sidebar: [
+      {
+        text: "概览",
+        items: [
+          { text: "文档目录", link: "/zh/index" },
+          { text: "变更记录", link: "/zh/changelog" },
+        ],
+      },
+      {
+        text: "格式规范",
+        collapsed: false,
+        items: [
+          { text: "头部格式", link: "/zh/specification/header" },
+          { text: "原始载荷格式", link: "/zh/specification/payload" },
+          { text: "压缩算法", link: "/zh/specification/compression" },
+          { text: "S-Box 置换", link: "/zh/specification/obfuscation" },
+          { text: "分卷规则", link: "/zh/specification/volumes" },
+        ],
+      },
+      {
+        text: "实现指南",
+        collapsed: false,
+        items: [
+          { text: "打包流程", link: "/zh/implementation/pack-flow" },
+          { text: "解包流程", link: "/zh/implementation/unpack-flow" },
+          { text: "边界情况", link: "/zh/implementation/edge-cases" },
+          { text: "自定义数据段", link: "/zh/implementation/custom-data" },
+        ],
+      },
+      {
+        text: "API 参考",
+        collapsed: false,
+        items: [
+          { text: "Python", link: "/zh/api/python" },
+          { text: "JavaScript", link: "/zh/api/javascript" },
+        ],
+      },
+    ],
+}

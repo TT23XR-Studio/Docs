@@ -1,0 +1,124 @@
+{
+    nav: [
+      { text: "首页", link: "/index" },
+      { text: "安装", link: "/01-installation/01-requirements" },
+      { text: "API 参考", link: "/04-api-reference/01-KifeJS-log" },
+      { text: "示例", link: "/09-examples/01-hello-world/index" },
+      // { text: "回到文档汇总", link: "/back/" },
+    ],
+
+    sidebar: [
+      {
+        text: "开始使用",
+        items: [
+          { text: "简介", link: "/" },
+        ],
+      },
+      {
+        text: "一、安装指南",
+        collapsed: false,
+        items: [
+          { text: "环境要求", link: "/01-installation/01-requirements" },
+          { text: "安装步骤", link: "/01-installation/02-install-steps" },
+          { text: "验证安装", link: "/01-installation/03-verification" },
+        ],
+      },
+      {
+        text: "二、快速入门",
+        collapsed: false,
+        items: [
+          { text: "第一个脚本", link: "/02-getting-started/01-first-script" },
+          { text: "目录结构", link: "/02-getting-started/02-directory-structure" },
+          { text: "命令参考", link: "/02-getting-started/03-commands" },
+        ],
+      },
+      {
+        text: "三、脚本基础",
+        collapsed: false,
+        items: [
+          { text: "脚本类型", link: "/03-script-fundamentals/01-script-types" },
+          { text: "配置文件", link: "/03-script-fundamentals/02-script-config" },
+          { text: "执行模型", link: "/03-script-fundamentals/03-execution-model" },
+          { text: "错误处理", link: "/03-script-fundamentals/04-error-handling" },
+        ],
+      },
+      {
+        text: "四、API 参考",
+        collapsed: false,
+        items: [
+          { text: "KifeJS.log()", link: "/04-api-reference/01-KifeJS-log" },
+          { text: "KifeJS.broadcast()", link: "/04-api-reference/02-KifeJS-broadcast" },
+          { text: "KifeJSConfig", link: "/04-api-reference/03-KifeJSConfig" },
+          { text: "KifeEvent", link: "/04-api-reference/04-KifeEvent" },
+          { text: "内置变量", link: "/04-api-reference/05-script-variables" },
+          { text: "API 组合使用", link: "/04-api-reference/06-combined-usage" },
+        ],
+      },
+      {
+        text: "五、事件系统深度指南",
+        collapsed: false,
+        items: [
+          { text: "核心概念", link: "/05-event-system/01-concepts" },
+          { text: "构建事件总线", link: "/05-event-system/02-building-event-bus" },
+          { text: "事件生命周期", link: "/05-event-system/03-event-lifecycle" },
+          { text: "取消机制深度剖析", link: "/05-event-system/04-cancellation-deep" },
+          { text: "高级事件模式", link: "/05-event-system/05-advanced-patterns" },
+        ],
+      },
+      {
+        text: "六、跨脚本通信",
+        collapsed: false,
+        items: [
+          { text: "全局作用域共享", link: "/06-cross-script/01-global-scope" },
+          { text: "直接 API 调用", link: "/06-cross-script/02-direct-api" },
+          { text: "事件驱动通信", link: "/06-cross-script/03-event-driven" },
+          { text: "数据仓库模式", link: "/06-cross-script/04-data-repository" },
+          { text: "命名空间约定", link: "/06-cross-script/05-namespace-conventions" },
+          { text: "状态管理与重载", link: "/06-cross-script/06-state-lifecycle" },
+        ],
+      },
+      {
+        text: "七、进阶模式",
+        collapsed: false,
+        items: [
+          { text: "定时任务与调度", link: "/07-advanced-patterns/01-timers" },
+          { text: "模块化组织", link: "/07-advanced-patterns/02-module-organization" },
+          { text: "生命周期钩子", link: "/07-advanced-patterns/03-lifecycle-hooks" },
+          { text: "状态持久化", link: "/07-advanced-patterns/04-persistence" },
+          { text: "性能优化", link: "/07-advanced-patterns/05-performance" },
+        ],
+      },
+      {
+        text: "八、沙箱与安全",
+        collapsed: false,
+        items: [
+          { text: "超时机制", link: "/08-sandbox/01-timeout" },
+          { text: "文件系统策略", link: "/08-sandbox/02-filesystem" },
+          { text: "安全编码最佳实践", link: "/08-sandbox/03-secure-coding" },
+        ],
+      },
+      {
+        text: "九、完整示例集",
+        collapsed: false,
+        items: [
+          { text: "01 — Hello World", link: "/09-examples/01-hello-world/index" },
+          { text: "02 — 定时广播", link: "/09-examples/02-timed-broadcast/index" },
+          { text: "03 — 事件总线", link: "/09-examples/03-simple-event-bus/bus" },
+          { text: "04 — 跨脚本计数器", link: "/09-examples/04-cross-script-counter/counter" },
+          { text: "05 — 模块化系统", link: "/09-examples/05-modular-system/core" },
+          { text: "06 — 企业级事件系统", link: "/09-examples/06-full-event-system/event-bus" },
+        ],
+      },
+      {
+        text: "十、故障排除",
+        collapsed: false,
+        items: [
+          { text: "原生库找不到", link: "/10-troubleshooting/01-library-not-found" },
+          { text: "脚本错误", link: "/10-troubleshooting/02-script-errors" },
+          { text: "执行超时", link: "/10-troubleshooting/03-timeout" },
+          { text: "重载问题", link: "/10-troubleshooting/04-reload-issues" },
+          { text: "日志与调试", link: "/10-troubleshooting/05-logs-and-debug" },
+        ],
+      },
+    ],
+}

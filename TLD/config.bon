@@ -1,0 +1,147 @@
+{
+    nav: [
+      { text: "首页", link: "/index" },
+      { text: "什么是 TLD 核心", link: "/zh/guide/what-is-TLD-Core" },
+      { text: "快速开始", link: "/zh/guide/getting-started" },
+      { text: " API 文档", link: "/zh/api/API-overview" },
+      // { text: "回到文档汇总", link: "/back/" },
+    ],
+
+    sidebar: [
+      {
+        text: "指南",
+        collapsed: true,
+        items: [
+          { text: "什么是 TLD 核心", link: "/zh/guide/what-is-TLD-Core" },
+          { text: "快速开始", link: "/zh/guide/getting-started" },
+          { text: "支持的协议", link: "/zh/guide/supported-protocols" },
+          { text: "版本详解", link: "/zh/guide/version/version-overview" },
+        ]
+      },
+      {
+        text: " API 文档",
+        collapsed: true,
+        items: [
+          { text: " API 概览", link: "/zh/api/API-overview" },
+          {
+            text: "函数列表",
+            collapsed: true,
+            items: [
+              { text: "get_downloader", link: "/zh/api/functions/get_downloader" },
+              { text: "start_download", link: "/zh/api/functions/start_download" },
+              { text: "start_download_id", link: "/zh/api/functions/start_download_id" },
+              { text: "start_multiple_downloads_id", link: "/zh/api/functions/start_multiple_downloads_id" },
+              { text: "pause_download", link: "/zh/api/functions/pause_download" },
+              { text: "resume_download", link: "/zh/api/functions/resume_download" },
+              { text: "stop_download", link: "/zh/api/functions/stop_download" },
+              { text: "set_speed_limit", link: "/zh/api/functions/set_speed_limit" },
+              { text: "set_proxy", link: "/zh/api/functions/set_proxy" },
+              { text: "set_retry_config", link: "/zh/api/functions/set_retry_config" },
+              { text: "get_performance_stats", link: "/zh/api/functions/get_performance_stats" },
+            ]
+          }
+        ]
+      },
+      {
+        text: "事件文档",
+        collapsed: true,
+        items: [
+          { text: "事件概览", link: "/zh/event/event-overview" },
+          { text: " Event 键值对 格式", link: "/zh/event/event-format" },
+          { text: "事件详解", link: "/zh/event/events/event-detail" },
+          {
+            text: "事件列表",
+            collapsed: true,
+            items: [
+              { text: "start", link: "/zh/event/events/start" },
+              { text: "startOne", link: "/zh/event/events/startOne" },
+              { text: "update", link: "/zh/event/events/update" },
+              { text: "endOne", link: "/zh/event/events/endOne" },
+              { text: "end", link: "/zh/event/events/end" },
+              { text: "msg", link: "/zh/event/events/msg" },
+              { text: "err", link: "/zh/event/events/err" },
+            ]
+          }
+        ]
+      },
+      {
+        text: "接口封装",
+        collapsed: true,
+        items: [
+          {
+            text: " Python ",
+            collapsed: true,
+            items: [
+              { text: " Py 接口封装 怎么使用", link: "/zh/interface/py/how-to-use" },
+              { text: " TTHSD Python 单元测试", link: "/zh/examples/interface/py/unit-test" },
+            ]
+          },
+          {
+            text: " Node.js/TypeScript ",
+            collapsed: true,
+            items: [
+              { text: " TS 接口封装 怎么使用", link: "/zh/interface/ts/how-to-use" },
+              { text: " TS 接口封装 怎么在 Electron 中使用", link: "/zh/interface/ts/how-to-integrate-in-Electron" },
+            ]
+          },
+          {
+            text: " C/C++/C# ",
+            collapsed: true,
+            items: [
+              { text: " C/C++/C# 接口封装 怎么使用", link: "/zh/interface/c_cpp_csharp/how-to-use" },
+            ]
+          },
+          {
+            text: " Godot ",
+            collapsed: true,
+            items: [
+              { text: " Godot 接口封装 怎么使用", link: "/zh/interface/godot/how-to-use" },
+            ]
+          },
+          {
+            text: " Golang ",
+            collapsed: true,
+            items: [
+              { text: " Golang 接口封装 怎么使用", link: "/zh/interface/golang/how-to-use" },
+            ]
+          },
+          {
+            text: " Java/Kotlin ",
+            collapsed: true,
+            items: [
+              { text: " Java/Kotlin 接口封装 怎么使用", link: "/zh/interface/java_kt/how-to-use" },
+              { text: " Java/Kotlin 接口封装 怎么在 Android 和 HarmonyOS 中使用", link: "/zh/interface/java_kt/how-to-use-in-AndroidAndHarmonyOS" },
+              { text: " Java/Kotlin 接口封装 怎么在 Minecraft Mod / Plugin 中使用", link: "/zh/interface/java_kt/how-to-use-in-minecraft" },
+            ]
+          },
+          {
+            text: " Rust ",
+            collapsed: true,
+            items: [
+              { text: " Rust 接口封装 怎么使用", link: "/zh/interface/rust/how-to-use" },
+            ]
+          },
+        ]
+      },
+      {
+        text: "示例",
+        collapsed: true,
+        items: [
+          { text: " TTHSD Python 接口封装 的 Callback 示例", link: "/zh/examples/interface/py/callback" },
+        ]
+      },
+      {
+        text: "其他",
+        collapsed: false,
+        items: [
+          { text: "鸣谢", link: "/zh/acknowledgments/acknowledgments" },
+          { text: "贡献指南", link: "/zh/guide/contributing" },
+          { text: "与其他项目的对比", link: "/zh/Comparison/overview" },
+          {
+            text: "公告栏",
+            link: "/back/Bulletin/"
+          },
+        ],
+      },
+    ],
+}

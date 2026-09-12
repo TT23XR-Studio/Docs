@@ -1,0 +1,25 @@
+{
+    nav: [
+      { text: "首页", link: "/index" },
+      // { text: "回到文档汇总", link: "/back/" },
+      { text: "描述（概览）", link: "/zh/overview" },
+    ],
+
+    sidebar: [
+      {
+        text: "概览",
+        collapsed: false,
+        items: [
+          { text: "概览", link: "/zh/overview" },
+          { text: "公告列表", link: "/zh/list" },
+        ]
+      },
+      {
+        text: "公告",
+        collapsed: true,
+        items: [
+          { text: "对 TTHSD Next ABI 变动的解释", link: "/zh/ABI-Changing-Explan" },
+        ]
+      },
+    ],
+}

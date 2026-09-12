@@ -1,0 +1,213 @@
+{
+    nav: [
+      { text: "首页", link: "/index" },
+      { text: "什么是 KossJS", link: "/zh/guide/what-is-KossJS" },
+      { text: "快速开始", link: "/zh/guide/getting-started" },
+      { text: "API 文档", link: "/zh/api/API-overview" },
+      // { text: "回到文档汇总", link: "/back/" },
+    ],
+
+    sidebar: [
+      {
+        text: "指南",
+        collapsed: false,
+        items: [
+          { text: "什么是 KossJS", link: "/zh/guide/what-is-KossJS" },
+          { text: "快速开始", link: "/zh/guide/getting-started" },
+          { text: "内置模块系统", link: "/zh/guide/builtin-modules" },
+          { text: "ESM Import 支持", link: "/zh/guide/esm-import" },
+          { text: "安全与沙箱", link: "/zh/security-sandbox/security-sandbox" },
+          { text: "贡献指南", link: "/zh/guide/contributing" },
+        ]
+      },
+      {
+        text: "版本",
+        collapsed: false,
+        items: [
+          { text: "版本管理规范", link: "/zh/version/version-overview" },
+          { text: "版本变更日志 (dev.5 → dev.8)", link: "/zh/version/changelog-dev.5-to-dev.8" },
+          { text: "版本变更日志 (dev.8 → dev.9)", link: "/zh/version/changelog-dev.8-to-dev.9" },
+          { text: "版本变更日志 (dev.9 → dev.10)", link: "/zh/version/changelog-dev.9-to-dev.10" },
+        ]
+      },
+      {
+        text: "参考",
+        collapsed: false,
+        items: [
+          { text: "标准库支持状态", link: "/zh/reference/stdlib-support" },
+          { text: "koss: 协议模块", link: "/zh/reference/koss-protocol" },
+          { text: "Node.js 兼容层", link: "/zh/reference/node-compat-layer" },
+          { text: "Bun 兼容层", link: "/zh/reference/bun-compat-layer" },
+          { text: "Deno 兼容层", link: "/zh/reference/deno-compat-layer" },
+          { text: "Koss 原生模块", link: "/zh/reference/koss-native-modules" },
+          { text: "stable 模式替代方案", link: "/zh/reference/stable-alternatives" },
+          { text: "API 概览", link: "/zh/api/API-overview" },
+        ]
+      },
+      {
+        text: "社区编写",
+        collapsed: false,
+        items: [
+          { text: "FAQ", link: "/zh/community/COMMUNITY_FAQ" },
+        ]
+      },
+      {
+        text: "API 文档",
+        collapsed: false,
+        items: [
+          { text: "API 概览", link: "/zh/api/API-overview" },
+          {
+            text: "全局对象",
+            collapsed: true,
+            items: [
+              { text: "KossJS", link: "/zh/api/globals/kossjs-global" },
+              { text: "KossJS.set_audit_callback", link: "/zh/api/globals/kossjs-set-audit-callback" },
+            ]
+          },
+          {
+            text: "实例生命周期",
+            collapsed: true,
+            items: [
+              { text: "koss_create", link: "/zh/api/functions/koss_create" },
+              { text: "koss_create_with_caps", link: "/zh/api/functions/koss_create_with_caps" },
+              { text: "koss_create_with_modules", link: "/zh/api/functions/koss_create_with_modules" },
+              { text: "koss_create_with_modules_and_caps", link: "/zh/api/functions/koss_create_with_modules_and_caps" },
+              { text: "koss_create_with_builtins", link: "/zh/api/functions/koss_create_with_builtins" },
+              { text: "koss_destroy", link: "/zh/api/functions/koss_destroy" },
+              { text: "koss_get_capabilities", link: "/zh/api/functions/koss_get_capabilities" },
+              { text: "koss_get_builtins", link: "/zh/api/functions/koss_get_builtins" },
+              { text: "koss_is_builtin_enabled", link: "/zh/api/functions/koss_is_builtin_enabled" },
+              { text: "koss_is_stable", link: "/zh/api/functions/koss_is_stable" },
+            ]
+          },
+          {
+            text: "安全与沙箱",
+            collapsed: true,
+            items: [
+              { text: "koss_set_audit_mask", link: "/zh/api/functions/koss_set_audit_mask" },
+              { text: "koss_get_audit_mask", link: "/zh/api/functions/koss_get_audit_mask" },
+              { text: "koss_check_sandbox", link: "/zh/api/functions/koss_check_sandbox" },
+              { text: "koss_clear_js_audit", link: "/zh/api/functions/koss_clear_js_audit" },
+              { text: "koss_enable_audit_debug", link: "/zh/api/functions/koss_enable_audit_debug" },
+            ]
+          },
+          {
+            text: "代码执行",
+            collapsed: true,
+            items: [
+              { text: "koss_eval", link: "/zh/api/functions/koss_eval" },
+              { text: "koss_run_file", link: "/zh/api/functions/koss_run_file" },
+              { text: "koss_run_module", link: "/zh/api/functions/koss_run_module" },
+              { text: "koss_run_module_string", link: "/zh/api/functions/koss_run_module_string" },
+              { text: "koss_run_string", link: "/zh/api/functions/koss_run_string" },
+              { text: "koss_run_async", link: "/zh/api/functions/koss_run_async" },
+              { text: "koss_tick", link: "/zh/api/functions/koss_tick" },
+            ]
+          },
+          {
+            text: "全局变量注入",
+            collapsed: true,
+            items: [
+              { text: "koss_set_global_string", link: "/zh/api/functions/koss_set_global_string" },
+              { text: "koss_set_global_number", link: "/zh/api/functions/koss_set_global_number" },
+              { text: "koss_set_global_bool", link: "/zh/api/functions/koss_set_global_bool" },
+              { text: "koss_set_global_null", link: "/zh/api/functions/koss_set_global_null" },
+              { text: "koss_set_global_undefined", link: "/zh/api/functions/koss_set_global_undefined" },
+              { text: "koss_set_global_json", link: "/zh/api/functions/koss_set_global_json" },
+            ]
+          },
+          {
+            text: "函数 / 类注册",
+            collapsed: true,
+            items: [
+              { text: "koss_register_function", link: "/zh/api/functions/koss_register_function" },
+              { text: "koss_register_class", link: "/zh/api/functions/koss_register_class" },
+              { text: "koss_register_module_loader", link: "/zh/api/functions/koss_register_module_loader" },
+            ]
+          },
+          {
+            text: "已移除 API",
+            collapsed: true,
+            items: [
+              { text: "koss_create_worker_pool (已移除)", link: "/zh/api/functions/koss_create_worker_pool" },
+              { text: "koss_worker_post_message (已移除)", link: "/zh/api/functions/koss_worker_post_message" },
+              { text: "koss_worker_execute (已移除)", link: "/zh/api/functions/koss_worker_execute" },
+              { text: "koss_worker_try_recv (已移除)", link: "/zh/api/functions/koss_worker_try_recv" },
+              { text: "koss_worker_terminate (已移除)", link: "/zh/api/functions/koss_worker_terminate" },
+              { text: "koss_worker_shutdown (已移除)", link: "/zh/api/functions/koss_worker_shutdown" },
+            ]
+          },
+          {
+            text: "网络 & 内部绑定",
+            collapsed: true,
+            items: [
+              { text: "koss_fetch", link: "/zh/api/functions/koss_fetch" },
+              { text: "koss_get_binding", link: "/zh/api/functions/koss_get_binding" },
+            ]
+          },
+          {
+            text: "内存管理 & 信息",
+            collapsed: true,
+            items: [
+              { text: "koss_free_string", link: "/zh/api/functions/koss_free_string" },
+              { text: "koss_free_result", link: "/zh/api/functions/koss_free_result" },
+              { text: "koss_version", link: "/zh/api/functions/koss_version" },
+            ]
+          },
+          {
+            text: "FFI 内部 API (_senri_ffi)",
+            collapsed: true,
+            items: [
+              { text: "概览", link: "/zh/api/ffi_internal/README" },
+              { text: "类型系统", link: "/zh/api/ffi_internal/types" },
+              { text: "动态库管理", link: "/zh/api/ffi_internal/library" },
+              { text: "同步函数绑定 (func)", link: "/zh/api/ffi_internal/func" },
+              { text: "异步函数绑定 (funcAsync)", link: "/zh/api/ffi_internal/funcAsync" },
+              { text: "回调函数", link: "/zh/api/ffi_internal/callback" },
+              { text: "内存管理", link: "/zh/api/ffi_internal/memory" },
+              { text: "指针操作", link: "/zh/api/ffi_internal/pointer" },
+              { text: "结构体", link: "/zh/api/ffi_internal/struct" },
+              { text: "数组类型", link: "/zh/api/ffi_internal/array" },
+              { text: "完整示例", link: "/zh/api/ffi_internal/examples" },
+            ]
+          },
+        ]
+      },
+      {
+        text: "接口封装",
+        collapsed: false,
+        items: [
+          {
+            text: "Python",
+            collapsed: false,
+            items: [
+              { text: "Py 接口封装怎么使用", link: "/zh/interface/py/how-to-use" },
+            ]
+          },
+          {
+            text: "TypeScript",
+            collapsed: false,
+            items: [
+              { text: "TS 接口封装怎么使用", link: "/zh/interface/ts/how-to-use" },
+            ]
+          },
+        ]
+      },
+      {
+        text: "示例",
+        collapsed: false,
+        items: [
+          { text: "基础示例", link: "/zh/examples/example-basic" },
+        ]
+      },
+      {
+        text: "其他",
+        collapsed: false,
+        items: [
+          { text: "鸣谢", link: "/zh/acknowledgments/acknowledgments" },
+          { text: "贡献指南", link: "/zh/guide/contributing" },
+          { text: "KossJS 诞生记", link: "/zh/other/origin-story"},
+        ],
+      },
+    ],
+}
