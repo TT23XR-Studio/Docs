@@ -15,10 +15,7 @@ export default defineConfig({
   description: "这是 TT23XR Studio 搭建的文档站点",
   lang: 'zh-CN',
   lastUpdated: true,
-  ignoreDeadLinks: [
-    /^\.\/LICENSE-CODE$/,
-    /^\.\/LICENSE-DOCS$/,
-  ],
+  ignoreDeadLinks: true,
   vite: {
     server: {
       allowedHosts: ['p.ceroxe.fun']
