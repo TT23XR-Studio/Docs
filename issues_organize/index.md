@@ -257,7 +257,7 @@ onMounted(() => {
 })
 </script>
 
-# Issues 组织
+# 组织 Issues
 
 ## 提交新 Issue
 

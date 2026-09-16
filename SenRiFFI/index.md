@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "SenRi FFI / 千里 FFI / せんり FFI"
-  text: "统一 FFI（外部函数接口）库"
-  tagline: "统一 FFI（外部函数接口）库，提供跨语言的原生 C 函数调用能力。支持 JavaScript/TypeScript 和 Python。"
+  name: "SenRi FFI / 千里 FFI"
+  text: "统一 FFI 库"
+  tagline: "统一 FFI 库，提供跨语言的原生 C 函数调用能力。支持 JavaScript/TypeScript 和 Python。"
   actions:
     - theme: brand
       text: "快速开始"

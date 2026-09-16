@@ -37,7 +37,7 @@ if (typeof size !== 'number' || size <= 0) {
 /** 仅允许 0.25 或任意正整数 */
 const isValidSize = (v: number) => v === 0.25 || v === 0.5 || v === 0.75 || (Number.isInteger(v) && v > 0)
 
-if (import.meta.env.DEV && !isValidSize(size)) {
+if ((import.meta as any).env.DEV && !isValidSize(size)) {
   console.warn(
     `[LOGO] 无效的 size: ${size}。仅支持 0.25, 0.5, 0.75 或任意正整数。`
   )
